@@ -1,11 +1,11 @@
-// home
-function get (req, res) {
-    const response = {
-        title: "Welcome",
-        response: "the server is running"
-    }
+// importing products model
+const ProductsModel = require('../models/productsModel')
 
-    res.send(response)
+// GET
+async function get (req, res) {
+    const products = await ProductsModel.find()
+
+    res.send(products) 
 }
 
 module.exports = {
