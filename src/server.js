@@ -1,14 +1,12 @@
 const express = require('express')
 const app = express()
 
-app.get('/', (req, res) => {
-    const response = {
-        title: "Welcome",
-        response: "the server is running"
-    }
+// importing routes file
+const routes = require('./routes/routes')
 
-    res.send(response)
-})
+// setting routes
+app.use('/', routes)
+
 
 const port = process.env.PORT || 8080
 app.listen(port, () => console.log(`server is listening on port ${port}`))
