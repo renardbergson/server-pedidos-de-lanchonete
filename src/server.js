@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 
 // importing routes file
 const routes = require('./routes/routes')
@@ -10,6 +11,9 @@ app.use('/', routes)
 // importing database
 const database = require('./database/database')
 database.connect()
+
+// enabling cors
+app.use(cors())
 
 // setting port to access the application
 const port = process.env.PORT || 8080
