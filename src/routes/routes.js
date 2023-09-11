@@ -10,6 +10,7 @@ router.get('/customers/:id?', customersController.get)
 
 // POST
 router.post('/products', productsController.post)
+router.post('/customers', customersController.post)
 
 // exporting router
 module.exports = router
