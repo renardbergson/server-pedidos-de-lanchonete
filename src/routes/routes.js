@@ -8,5 +8,8 @@ const customersController = require('../controllers/customersController')
 router.get('/products/:id?', productsController.get)
 router.get('/customers/:id?', customersController.get)
 
+// POST
+router.post('/products', productsController.post)
+
 // exporting router
 module.exports = router

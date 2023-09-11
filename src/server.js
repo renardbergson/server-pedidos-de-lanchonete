@@ -5,6 +5,9 @@ const cors = require('cors')
 // enabling cors
 app.use(cors())
 
+// enabling server to receive JSON data
+app.use(express.json())
+
 // importing routes file
 const routes = require('./routes/routes')
 
