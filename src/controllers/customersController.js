@@ -16,8 +16,10 @@ async function post(req, res) {
     const customer = new CustomerModel({name, email, phone, street, number, neighborhood})
 
     await customer.save()
+
+    const response = {"message": "customer succesfully sent"}
     
-    res.send('customer succesfully sent')
+    res.send(response)
 }
 
 module.exports = {

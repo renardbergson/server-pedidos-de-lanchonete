@@ -20,7 +20,9 @@ async function post (req, res) {
 
     await product.save()
 
-    res.send('product succesfully sent')
+    const response = {"message": "product succesfully sent"}
+
+    res.send(response)
 }   
 
 module.exports = {
