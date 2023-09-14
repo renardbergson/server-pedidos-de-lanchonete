@@ -12,5 +12,8 @@ router.get('/customers/:id?', customersController.get)
 router.post('/products', productsController.post)
 router.post('/customers', customersController.post)
 
+// DELETE
+router.delete('/products/:id', productsController.del)
+
 // exporting router
 module.exports = router

@@ -18,14 +18,26 @@ async function post (req, res) {
 
     const product = new ProductsModel({name, description, price})
 
-    await product.save()
+    const save = await product.save()
 
-    const response = {"message": "product succesfully sent"}
+    const response = save ? "product succesfully sent" : "some error has ocurred"
 
-    res.send(response)
-}   
+    res.send({"message": response})
+}
+
+// DELETE
+async function del (req, res) {
+    const { id } = req.params
+
+    const remove = await ProductsModel.deleteOne({ _id: id })
+    
+    const response = remove ? "product succesfully removed" : "some error has ocurred"
+
+    res.send({"message": response})
+}
 
 module.exports = {
     get,
-    post
+    post,
+    del
 }
