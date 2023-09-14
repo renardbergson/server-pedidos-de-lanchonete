@@ -20,9 +20,9 @@ async function post (req, res) {
 
     const save = await product.save()
 
-    const response = save ? "product succesfully sent" : "some error has ocurred"
+    const response = save ? {"message": "product succesfully sent"} : null
 
-    res.send({"message": response})
+    res.send(response)
 }
 
 // DELETE
@@ -31,9 +31,9 @@ async function del (req, res) {
 
     const remove = await ProductsModel.deleteOne({ _id: id })
     
-    const response = remove ? "product succesfully removed" : "some error has ocurred"
+    const response = remove ? {"message": "product succesfully removed"} : null
 
-    res.send({"message": response})
+    res.send(response)
 }
 
 module.exports = {

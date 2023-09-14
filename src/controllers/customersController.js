@@ -15,14 +15,25 @@ async function post(req, res) {
     
     const customer = new CustomerModel({name, email, phone, password})
 
-    await customer.save()
+    const save = await customer.save()
 
-    const response = {"message": "customer succesfully sent"}
+    const response = save ? {"message": "customer succesfully sent"} : null
     
+    res.send(response)
+}
+
+async function del (req, res) {
+    const { id } = req.params
+
+    const remove = await CustomerModel.deleteOne({ _id: id })
+
+    const response = remove ? {"message": "customer succesfully removed"} : null
+
     res.send(response)
 }
 
 module.exports = {
     get,
-    post
+    post,
+    del
 }

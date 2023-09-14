@@ -14,6 +14,7 @@ router.post('/customers', customersController.post)
 
 // DELETE
 router.delete('/products/:id', productsController.del)
+router.delete('/customers/:id', customersController.del)
 
 // exporting router
 module.exports = router
