@@ -11,9 +11,9 @@ async function get(req, res) {
 }
 
 async function post(req, res) {
-    const { name, email, phone, street, number, neighborhood } = req.body
-
-    const customer = new CustomerModel({name, email, phone, street, number, neighborhood})
+    const { name, email, phone, password } = req.body
+    
+    const customer = new CustomerModel({name, email, phone, password})
 
     await customer.save()
 

@@ -4,9 +4,7 @@ const schema = new mongoose.Schema({
     name: String,
     email: String,
     phone: Number,
-    street: String,
-    number: String,
-    neighborhood: String
+    password: String
 })
 
 const Model = mongoose.model('customers', schema)
