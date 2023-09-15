@@ -4,6 +4,9 @@ const router = require('express').Router()
 const productsController = require('../controllers/productsController') 
 const customersController = require('../controllers/customersController') 
 
+// LOGIN
+router.post('/customers/login', customersController.login)
+
 // GET
 router.get('/products/:id?', productsController.get)
 router.get('/customers/:id?', customersController.get)

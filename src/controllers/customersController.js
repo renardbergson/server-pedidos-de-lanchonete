@@ -1,5 +1,13 @@
 const CustomerModel = require('../models/customersModel')
 
+async function login (req, res) {
+    const { user, pass } = req.body
+    
+    const _user = await CustomerModel.find({email: user, password: pass})
+
+    _user ? res.send(_user) : null
+}
+
 async function get(req, res) {
     const { id } = req.params
 
@@ -33,6 +41,7 @@ async function del (req, res) {
 }
 
 module.exports = {
+    login,
     get,
     post,
     del
