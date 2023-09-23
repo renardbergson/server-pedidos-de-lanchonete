@@ -4,20 +4,18 @@ const router = require('express').Router()
 const productsController = require('../controllers/productsController') 
 const customersController = require('../controllers/customersController') 
 
-// LOGIN
-router.post('/customers/login', customersController.login)
+router.post('/customers/login', customersController.login) // login
 
-// GET
-router.get('/products/:id?', productsController.get)
-router.get('/customers/:id?', customersController.get)
+router.post('/customers/NewOrder', customersController.newOrder) // new order
 
-// POST
-router.post('/products', productsController.post)
-router.post('/customers', customersController.post)
+router.get('/products/:id?', productsController.get) // list products
+router.get('/customers/:id?', customersController.get) // list customers
 
-// DELETE
-router.delete('/products/:id', productsController.del)
-router.delete('/customers/:id', customersController.del)
+router.post('/products', productsController.post) // new product
+router.post('/customers', customersController.post) // new customer
+
+router.delete('/products/:id', productsController.del) // delete product
+router.delete('/customers/:id', customersController.del) // delete customer
 
 // exporting router
 module.exports = router
