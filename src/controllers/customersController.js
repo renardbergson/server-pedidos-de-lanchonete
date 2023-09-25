@@ -11,9 +11,15 @@ async function login (req, res) {
 async function newOrder (req, res) {
     const { userID, orderID } = req.body
 
+    const date = new Date()
+    const orderDate = date.toLocaleDateString()
+    const orderTime = date.toLocaleTimeString().slice(0, 5)
+
     const order = {
         id: orderID,
-        status: 'aguardando'
+        orderDate,
+        orderTime,
+        status: 'pendente'
     }
 
     const newOrder = await CustomersModel.updateOne({_id: userID}, {$push: {orders: order}})
