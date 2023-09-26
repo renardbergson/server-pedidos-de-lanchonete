@@ -6,7 +6,8 @@ const customersController = require('../controllers/customersController')
 
 router.post('/customers/login', customersController.login) // login
 
-router.post('/customers/NewOrder', customersController.newOrder) // new order
+router.post('/customers/newOrder', customersController.newOrder) // new order
+router.put('/customers/updateOrder', customersController.updateOrder) // update order
 
 router.get('/products/:id?', productsController.get) // list products
 router.get('/customers/:id?', customersController.get) // list customers

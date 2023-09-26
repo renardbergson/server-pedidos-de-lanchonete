@@ -1,3 +1,4 @@
+const { response } = require('express')
 const CustomersModel = require('../models/customersModel')
 
 async function login (req, res) {
@@ -13,25 +14,33 @@ async function newOrder (req, res) {
 
     const date = new Date()
     const orderDate = date.toLocaleDateString()
-    const orderTime = date.toLocaleTimeString().slice(0, 5)
+    const orderTime = date.toLocaleTimeString()
 
     const order = {
         id: orderID,
         orderDate,
         orderTime,
-        status: 'pendente'
+        status: 'Pendente'
     }
 
     const newOrder = await CustomersModel.updateOne({_id: userID}, {$push: {orders: order}})
 
-/*     const updateOrder = await CustomersModel.updateOne(
-        {_id: '650f03f9c7c25360a0f6481e'}, 
-        {$set: {orders: {status: 'teste'}}}
-    ) */
-
-    //const cancelOrder = await CustomersModel.updateOne({_id: '650f03f9c7c25360a0f6481e'}, {$pull: {orders: teste}})
+    //const cancelOrder = await CustomersModel.updateOne({_id: '650f03f9c7c25360a0f6481e'}, {$pull: {orders: '...'}})
 
     const response = newOrder ? {"message": "success"} : {"message": "failed"}
+
+    res.send(response)
+}
+
+async function updateOrder (req, res) {
+    const { user, order, date, time, status } = req.body
+
+    const update = await CustomersModel.updateOne(
+        {_id: user, "orders.id": order, "orders.orderDate": date, "orders.orderTime": time},
+        {$set: {"orders.$.status": status}}
+    )
+
+    const response = update ? {"message": "success"} : {"message": "failed"}
 
     res.send(response)
 }
@@ -71,6 +80,7 @@ async function del (req, res) {
 module.exports = {
     login,
     newOrder,
+    updateOrder,
     get,
     post,
     del
