@@ -1,4 +1,3 @@
-const { response } = require('express')
 const CustomersModel = require('../models/customersModel')
 
 async function login (req, res) {
@@ -10,14 +9,15 @@ async function login (req, res) {
 }
 
 async function newOrder (req, res) {
-    const { userID, orderID } = req.body
+    const { userID, id, name } = req.body
 
     const date = new Date()
     const orderDate = date.toLocaleDateString()
     const orderTime = date.toLocaleTimeString()
 
     const order = {
-        id: orderID,
+        id,
+        name,
         orderDate,
         orderTime,
         status: 'Pendente'
