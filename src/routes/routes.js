@@ -8,6 +8,7 @@ router.post('/customers/login', customersController.login) // login
 
 router.post('/customers/newOrder', customersController.newOrder) // new order
 router.put('/customers/updateOrder', customersController.updateOrder) // update order
+router.post('/customers/deleteOrder', customersController.deleteOrder) // delete order
 
 router.get('/products/:id?', productsController.get) // list products
 router.get('/customers/:id?', customersController.get) // list customers

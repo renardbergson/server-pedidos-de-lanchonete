@@ -25,8 +25,6 @@ async function newOrder (req, res) {
 
     const newOrder = await CustomersModel.updateOne({_id: userID}, {$push: {orders: order}})
 
-    //const cancelOrder = await CustomersModel.updateOne({_id: '650f03f9c7c25360a0f6481e'}, {$pull: {orders: '...'}})
-
     const response = newOrder ? {"message": "success"} : {"message": "failed"}
 
     res.send(response)
@@ -41,6 +39,18 @@ async function updateOrder (req, res) {
     )
 
     const response = update ? {"message": "success"} : {"message": "failed"}
+
+    res.send(response)
+}
+
+async function deleteOrder (req, res) {
+    const {user, order, date, time} = req.body
+
+    const remove = await CustomersModel.updateOne(
+        {_id: user}, {$pull: {orders: {id: order, orderDate: date, orderTime: time}}}
+    )
+
+    const response = remove ? {"message": "success"} : {"message": "failed"}
 
     res.send(response)
 }
@@ -81,6 +91,7 @@ module.exports = {
     login,
     newOrder,
     updateOrder,
+    deleteOrder,
     get,
     post,
     del
