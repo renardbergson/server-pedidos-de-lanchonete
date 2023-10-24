@@ -34,7 +34,7 @@ do cliente em questão, caso contrário, algum pedido teria sido feito.
 &nbsp;&nbsp;&nbsp;&nbsp;•  Não poderia haver mais de um cliente com o mesmo e-mail ou telefone <br>
 &nbsp;&nbsp;&nbsp;&nbsp;•  Um cliente não poderia excluir pedidos feitos por um outro cliente 
 
-### Pontos Extras (implementados por mim)
+### Pontos Extras (não cobrados)
 &nbsp;&nbsp;&nbsp;&nbsp;•  Cada produto, além de nome e preço, possui uma descrição <br>
 &nbsp;&nbsp;&nbsp;&nbsp;•  Cada pedido cadastrado vai possuir, além da data, a <b>hora</b> <br>
 &nbsp;&nbsp;&nbsp;&nbsp;•  Há um endpoint específico para inserir produtos <br>
